@@ -13,3 +13,8 @@
     \left[ R - 2.58 \sqrt{ \frac{R(1-R)}{n} } , R + 2.58\sqrt{ \frac{R(1-R)}{n} } \right]
     ```  
 
+
+ライセンス
+----
+
+- MIT License
