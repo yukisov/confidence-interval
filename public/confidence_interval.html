@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>選挙：出口調査から得票率の信頼区間を算出する</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/confidence_interval.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="page-header">
+      <h1>選挙：出口調査から得票率の信頼区間を算出する</h1>
+    </div>
+
+
+    <form class="form-horizontal">
+
+      <div class="form-group">
+        <label for="total" class="col-sm-2 control-label">抽出人数</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="total" placeholder="抽出人数">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="candidate-1" class="col-sm-2 control-label">Aに投票した人数</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control candidate" id="candidate-1" data-name="A" placeholder="Aに投票した人数">
+        </div>
+
+        <label for="candidate-2" class="col-sm-2 control-label">Bに投票した人数</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control candidate" id="candidate-2" data-name="B" placeholder="Bに投票した人数">
+        </div>
+
+        <label for="candidate-3" class="col-sm-2 control-label">Cに投票した人数</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control candidate" id="candidate-3" data-name="C" placeholder="Cに投票した人数">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="candidate-4" class="col-sm-2 control-label">Dに投票した人数</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control candidate" id="candidate-4" data-name="D" placeholder="Dに投票した人数">
+        </div>
+
+        <label for="candidate-5" class="col-sm-2 control-label">Eに投票した人数</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control candidate" id="candidate-5" data-name="E" placeholder="Eに投票した人数">
+        </div>
+
+        <label for="candidate-6" class="col-sm-2 control-label">Fに投票した人数</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control candidate" id="candidate-6" data-name="F" placeholder="Fに投票した人数">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">信頼度</label>
+        <div class="col-sm-10">
+          <label class="radio-inline">
+            <input type="radio" name="reliability" value="95" checked="checked"> 95%
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="reliability" value="99"> 99%
+          </label>
+        </div>
+      </div>
+
+      <!--<div class="form-group">
+        <label class="col-sm-2 control-label">当選枠</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="max-num" placeholder="3" value="3">
+        </div>
+      </div>-->
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button id="btn-calc" type="button" class="btn btn-success">計算</button>
+          <button id="btn-clear" type="button" class="btn btn-danger">クリア</button>
+        </div>
+      </div>
+
+      <!--<div class="form-group">
+        <label class="col-sm-2 control-label">当選</label>
+        <div class="col-sm-10">
+          <p class="form-control-static" id="winners"></p>
+        </div>
+      </div>-->
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <div id="graph-container"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div id="error-area" class="col-sm-8 col-sm-offset-2 alert alert-danger" style="display:none;" role="alert"><div>
+      </div>
+   </form>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/highcharts-more.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.js"></script>
+  <script src="js/confidence_interval.js"></script>
+
+  </body>
+</html>

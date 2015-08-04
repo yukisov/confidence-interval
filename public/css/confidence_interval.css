@@ -1,0 +1,17 @@
+body {
+  margin:0 30px;
+}
+
+#description ul {
+  padding-left: 10px;
+}
+
+.conclusion {
+  font-size: 22px;
+  text-decoration: underline;
+}
+
+#winners {
+  font-size: 22px;
+  text-decoration: underline;
+}
