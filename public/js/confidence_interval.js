@@ -50,7 +50,8 @@
             text: '予想 得票率の信頼区間'
         },
         subtitle: {
-            text: '得票率は、' + reliability + '% の確率で以下の信頼区間内に収まる'
+            text: '・得票率は、' + reliability + "% の確率で以下の信頼区間内に収まる。<br>"
+                + '・信頼区間が重らない場合、ほぼその順位は覆らない。'
         },
         xAxis: {
           categories: dataObj.categories
