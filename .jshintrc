@@ -1,0 +1,22 @@
+{
+  "laxbreak": true,
+  "laxcomma": true,
+  "strict" : true,
+  "unused" : true,
+  "undef" : true,
+  "browser" : true,
+  "devel" : true,
+  "globals": {
+    "global": false,
+    "$": false,
+    "_": false,
+    "Promise": false,
+    "require": false,
+    "module": false,
+    "describe": false,
+    "it": false,
+    "beforeEach": false,
+    "expect": false
+  },
+  "multistr": true
+}
