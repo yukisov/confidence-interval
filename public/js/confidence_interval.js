@@ -71,7 +71,7 @@
             inverted: true
         },
         title: {
-            text: '予想 得票率の信頼区間'
+            text: '得票率の信頼区間'
         },
         subtitle: {
             text: '・各得票率は、' + commonModule.escapeHtml(reliability) + "% の確率で以下の信頼区間内に収まる。<br>"
