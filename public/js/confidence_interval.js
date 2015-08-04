@@ -6,7 +6,7 @@
   //---------------------------
   // Graph Render  module
   //---------------------------
-  global.app.graphRenderer = (function(global) {
+  global.app.graphRenderer = (function(/*global*/) {
 
     /**
      *
@@ -91,7 +91,7 @@
   //---------------------------
   // confidenceInterval module
   //---------------------------
-  global.app.confidenceInterval = (function(global) {
+  global.app.confidenceInterval = (function(/*global*/) {
 
     /**
      *
@@ -117,15 +117,11 @@
      */
     var calcAll = function(total, reliability) {
 
-      var elm_total = $('#total'),
-          total = elm_total.val(),
-          num_vote_tmp,
-          map_reliability = {
+      var map_reliability = {
             95: 1.96,
             99: 2.58
           },
           rel_val = map_reliability[95], // default value
-          deviation, min, max, sample_rate,
           resultArray = [];
 
       if (total === '' || isNaN(total)) {
@@ -136,9 +132,9 @@
       if (reliability in map_reliability) {
         rel_val = map_reliability[reliability];
       }
-      rel_val = map_reliability[reliability],
+      rel_val = map_reliability[reliability];
 
-      $('.candidate').each(function(index, elm){
+      $('.candidate').each(function(/*index, elm*/){
         var num_vote = $(this).val(),
             obj;
         if (num_vote === '') return;
@@ -205,7 +201,7 @@
             event.preventDefault();
             try {
 
-              reliability = parseInt($('input:radio[name=reliability]:checked').val()),
+              reliability = parseInt($('input:radio[name=reliability]:checked').val());
 
               $('#graph-container').html('');
               $('#error-area').html('').hide();
@@ -217,9 +213,9 @@
             }
         });
 
-        $('#btn-clear').on('click', function(event) {
+        $('#btn-clear').on('click', function(/*event*/) {
             $('#total').val('');
-            $('.candidate').each(function(index, elm){
+            $('.candidate').each(function(/*index, elm*/){
               $(this).val('');
             });
             $('#graph-container').html('');
