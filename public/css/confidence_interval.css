@@ -6,3 +6,10 @@ body {
   font-size: 22px;
   text-decoration: underline;
 }
+
+.footer {
+  border-top: solid 1px #eee;
+  margin-top: 30px;
+  padding-top:15px;
+  padding-bottom:15px;
+}
