@@ -75,7 +75,7 @@
         },
         subtitle: {
             text: '・各得票率は、' + commonModule.escapeHtml(reliability) + "% の確率で以下の信頼区間内に収まる。<br>"
-                + '・信頼区間が重らない場合、その順位はほぼ覆らないと言える。'
+                + '・信頼区間が重らない場合、その順位はほぼ決定となる。'
         },
         xAxis: {
           categories: dataObj.categories
