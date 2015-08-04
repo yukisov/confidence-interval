@@ -6,33 +6,6 @@
   //---------------------------
   // Graph Render  module
   //---------------------------
-  global.app.winner = (function(global) {
-
-    var decideWinners = function(arr) {
-
-
-    };
-
-
-    var render = function(arr) {
-
-      var resObj = decideWinners(arr);
-
-      var str_winners = ' A, B ';
-
-      $('#winners').html( str_winners );
-
-    };
-
-    return {
-      render: render
-    };
-
-  })(global);
-
-  //---------------------------
-  // Graph Render  module
-  //---------------------------
   global.app.graphRenderer = (function(global) {
 
     /**
@@ -237,7 +210,6 @@
               $('#error-area').html('').hide();
               resArray = contIntModule.calcAll($('#total').val(), reliability);
               global.app.graphRenderer.render(resArray, reliability);
-              //global.app.winner.render(resArray);
             } catch (error) {
               console.error(error);
               $('#error-area').html(error.message).show();
