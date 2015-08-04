@@ -6,6 +6,27 @@
   //---------------------------
   // Graph Render  module
   //---------------------------
+  global.app.common = (function(/*global*/) {
+
+    var escapeHtml = function(s) {
+
+      return s.replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;" )
+        .replace(/'/g, "&#39;" );
+
+    };
+
+    return {
+      escapeHtml: escapeHtml
+    };
+
+  })(global);
+
+  //---------------------------
+  // Graph Render  module
+  //---------------------------
   global.app.graphRenderer = (function(/*global*/) {
 
     /**
@@ -39,7 +60,8 @@
      */
     var render = function(arr, reliability) {
 
-      var dataObj = createData(arr);
+      var commonModule = global.app.common,
+          dataObj = createData(arr);
 
       $('#graph-container').highcharts({
         chart: {
@@ -50,7 +72,7 @@
             text: '予想 得票率の信頼区間'
         },
         subtitle: {
-            text: '・各得票率は、' + reliability + "% の確率で以下の信頼区間内に収まる。<br>"
+            text: '・各得票率は、' + commonModule.escapeHtml(reliability) + "% の確率で以下の信頼区間内に収まる。<br>"
                 + '・信頼区間が重らない場合、その順位はほぼ覆らないと言える。'
         },
         xAxis: {
