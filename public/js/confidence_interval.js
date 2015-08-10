@@ -215,41 +215,66 @@
   //--------------
   global.app.form = (function(global) {
 
+    /**
+     *
+     */
+    var calc = function() {
+      var contIntModule = global.app.confidenceInterval,
+          reliability,
+          resArray;
+
+      try {
+
+        reliability = parseInt($('input:radio[name=reliability]:checked').val());
+
+        $('#graph-container').html('');
+        $('#error-area').html('').hide();
+        resArray = contIntModule.calcAll($('#total').val(), reliability);
+        global.app.graphRenderer.render(resArray, reliability);
+      } catch (error) {
+        console.error(error);
+        $('#error-area').html(error.message).show();
+      }
+    };
+
+    /**
+     *
+     */
     var setHandlers = function() {
 
-        var contIntModule = global.app.confidenceInterval,
-            resArray;
+      $('#btn-calc').on('click', function(event) {
+          event.preventDefault();
+          calc();
+      });
 
-        $('#btn-calc').on('click', function(event) {
-            var  reliability;
-            event.preventDefault();
-            try {
+      $('#btn-clear').on('click', function(/*event*/) {
+          $('#total').val('');
+          $('.candidate').each(function(/*index, elm*/){
+            $(this).val('');
+          });
+          $('#graph-container').html('');
+          $('#error-area').html('').hide();
+      });
 
-              reliability = parseInt($('input:radio[name=reliability]:checked').val());
+    };
 
-              $('#graph-container').html('');
-              $('#error-area').html('').hide();
-              resArray = contIntModule.calcAll($('#total').val(), reliability);
-              global.app.graphRenderer.render(resArray, reliability);
-            } catch (error) {
-              console.error(error);
-              $('#error-area').html(error.message).show();
-            }
-        });
+    /**
+     *
+     */
+    var setDefaultValues = function() {
 
-        $('#btn-clear').on('click', function(/*event*/) {
-            $('#total').val('');
-            $('.candidate').each(function(/*index, elm*/){
-              $(this).val('');
-            });
-            $('#graph-container').html('');
-            $('#error-area').html('').hide();
-        });
+      $('#total').val('1000');
+      $('#candidate-1').val('100');
+      $('#candidate-2').val('120');
+      $('#candidate-3').val('140');
+      $('#candidate-4').val('160');
+      calc();
 
     };
 
     return {
-        setHandlers: setHandlers
+      setHandlers: setHandlers,
+      setDefaultValues: setDefaultValues
     };
 
   })(global);
@@ -260,6 +285,7 @@
   $(function(){
 
     global.app.form.setHandlers();
+    global.app.form.setDefaultValues();
 
   });
 
